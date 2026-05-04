@@ -1,0 +1,189 @@
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body{
+font-family: "Poppins";
+  background: #0f172a;
+}
+
+h2, h3 {
+  margin-bottom: 10px;
+}
+
+/* CARD STYLE */
+.card {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 12px;
+  color: #e2e8f0;
+}
+
+/* TASK ROW */
+.task {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.task:hover {
+  background: #334155;
+}
+
+/* HEADER ROW */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* EXPAND SECTION */
+.task-body {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* INPUTS */
+input, textarea {
+  background: #020617;
+  border: 1px solid #334155;
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+textarea {
+  resize: none;
+}
+
+/* BUTTONS */
+.btn {
+  background: #3b82f6;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-danger {
+  background: #ef4444;
+}
+
+.btn-icon {
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+/* ADD BAR */
+.add-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.add-bar2 {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* DATE LIST */
+.date-list button {
+  margin: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #1e293b;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.dashboard {
+  display: grid;
+  height: 100vh;
+  gap: 10px;
+  padding: 10px;
+
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-rows: 2fr 2fr 2fr;
+
+  grid-template-areas:
+    "daily daily reminders"
+    "daily daily reminders"
+    "history future scheduled"
+    "history future scheduled";
+}
+
+.daily { grid-area: daily; }
+.history { grid-area: history; height: 20vw; }
+.future { grid-area: future; }
+.reminders { grid-area: reminders; }
+.scheduled { grid-area: scheduled; }
+
+.box {
+  background: #0f172a;
+  border: 2px solid #0f172a;
+  border-radius: 8px;
+  padding: 10px;
+  overflow: scroll;
+}
+
+.mobile {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background: #111;
+  color: white;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: #1f2937;
+  color: white;
+  padding: 20px;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.drawer.open {
+  left: 0;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+}
