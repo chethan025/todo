@@ -6,7 +6,7 @@
 
 body{
 font-family: "Poppins";
-  background: #0f172a;
+  background: #000000;
 }
 
 h2, h3 {
@@ -15,7 +15,7 @@ h2, h3 {
 
 /* CARD STYLE */
 .card {
-  background: #0f172a;
+  background: #222222;
   border: 1px solid #1e293b;
   border-radius: 12px;
   padding: 12px;
@@ -24,7 +24,7 @@ h2, h3 {
 
 /* TASK ROW */
 .task {
-  background: #1e293b;
+  background: #141414;
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -33,7 +33,7 @@ h2, h3 {
 }
 
 .task:hover {
-  background: #334155;
+  background: #3d3d3d;
 }
 
 /* HEADER ROW */
@@ -53,8 +53,8 @@ h2, h3 {
 
 /* INPUTS */
 input, textarea {
-  background: #020617;
-  border: 1px solid #334155;
+  background: #181818;
+  border: 1px solid #424242;
   color: white;
   padding: 6px;
   border-radius: 6px;
@@ -66,8 +66,9 @@ textarea {
 
 /* BUTTONS */
 .btn {
-  background: #3b82f6;
-  border: none;
+  background: #53525200;
+  border: 2px solid #c7c7c7;
+  
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
@@ -75,7 +76,8 @@ textarea {
 }
 
 .btn-danger {
-  background: #ef4444;
+  color: #2b2b2b;
+  background: #c7c7c7;
 }
 
 .btn-icon {
@@ -101,7 +103,7 @@ textarea {
   margin: 4px;
   padding: 6px 10px;
   border-radius: 6px;
-  background: #1e293b;
+  background: #3b3b3b;
   border: none;
   color: white;
   cursor: pointer;
@@ -130,7 +132,7 @@ textarea {
 .scheduled { grid-area: scheduled; }
 
 .box {
-  background: #0f172a;
+  background: #222222;
   border: 2px solid #0f172a;
   border-radius: 8px;
   padding: 10px;
@@ -164,7 +166,7 @@ textarea {
   left: -260px;
   width: 260px;
   height: 100%;
-  background: #1f2937;
+  background: #2c2c2c;
   color: white;
   padding: 20px;
   transition: 0.3s;
@@ -173,6 +175,20 @@ textarea {
 
 .drawer.open {
   left: 0;
+}
+
+.drawer button{
+  background: #454545;
+  border: none;
+  color:#eaeaea;
+  border-radius: 6px;
+}
+
+.topbar button{
+  background: #454545;
+  border: none;
+  color:#eaeaea;
+  border-radius: 6px;
 }
 
 .overlay {

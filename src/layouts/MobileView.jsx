@@ -2,6 +2,7 @@ import { useState } from "react";
 import Daily from "../components/Daily";
 import History from "../components/History";
 import Scheduled from "../components/Scheduled";
+import FutureScheduled from "../components/FutureScheduled";
 import Todos from "../components/Todos";
 
 export default function MobileView() {
@@ -20,7 +21,8 @@ export default function MobileView() {
 
         <button onClick={() => { setTab("daily"); setOpen(false); }}>Daily</button>
         <button onClick={() => { setTab("history"); setOpen(false); }}>History</button>
-        <button onClick={() => { setTab("scheduled"); setOpen(false); }}>Scheduled</button>
+        <button onClick={() => { setTab("scheduled"); setOpen(false); }}>Today</button>
+        <button onClick={() => { setTab("future"); setOpen(false); }}>Future Scheduled</button>
         <button onClick={() => { setTab("todos"); setOpen(false); }}>Reminders</button>
       </div>
 
@@ -30,6 +32,7 @@ export default function MobileView() {
         {tab === "daily" && <Daily />}
         {tab === "history" && <History />}
         {tab === "scheduled" && <Scheduled />}
+        {tab === "future" && <FutureScheduled />}
         {tab === "todos" && <Todos />}
       </div>
 
