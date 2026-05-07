@@ -3,24 +3,20 @@ import { supabase } from "../lib/supabase";
 
 function Scheduled() {
   const [tasks, setTasks] = useState([]);
+  const [text, setText] = useState("");
+  const [date, setDate] = useState("");
+  const [note, setNote] = useState("");
   const [openId, setOpenId] = useState(null);
 
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
 
-  // Fetch today's selected date tasks
   const fetchTasks = async () => {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("scheduled_tasks")
       .select("*")
-      .eq("date", selectedDate)
-      .order("created_at", { ascending: true });
-
-    if (error) {
-      console.error(error);
-      return;
-    }
+      .eq("date", selectedDate);
 
     setTasks(data);
   };
@@ -29,40 +25,43 @@ function Scheduled() {
     fetchTasks();
   }, [selectedDate]);
 
-  // Toggle complete
+  const addTask = async () => {
+    if (!text || !date) return;
+
+    await supabase.from("scheduled_tasks").insert([
+      { title: text, date, note }
+    ]);
+
+    setText("");
+    setDate("");
+    setNote("");
+    fetchTasks();
+  };
+
   const toggleTask = async (task) => {
     await supabase
       .from("scheduled_tasks")
-      .update({
-        completed: !task.completed,
-      })
+      .update({ completed: !task.completed })
       .eq("id", task.id);
 
     fetchTasks();
   };
 
-  // Delete
   const deleteTask = async (id) => {
-    await supabase
-      .from("scheduled_tasks")
-      .delete()
-      .eq("id", id);
-
+    await supabase.from("scheduled_tasks").delete().eq("id", id);
     fetchTasks();
   };
 
   return (
-    <div className="card">
+    <div className="card iii">
+      <div className="tdy">
       <h2>Today Scheduled</h2>
-
-      {/* DATE PICKER */}
       <input
         type="date"
         value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
+        onChange={(e)=>setSelectedDate(e.target.value)}
       />
 
-      {/* TASK LIST */}
       {tasks.map((task) => (
         <div key={task.id} className="task">
 
@@ -72,29 +71,32 @@ function Scheduled() {
               setOpenId(openId === task.id ? null : task.id)
             }
           >
-            <span onClick={() => toggleTask(task)}>
+            <span onClick={()=>toggleTask(task)}>
               {task.completed ? "✔" : "☐"} {task.title}
             </span>
           </div>
 
           {openId === task.id && (
             <div className="task-body">
-
-              {task.note && (
-                <div>📝 {task.note}</div>
-              )}
-
-              <button
-                className="btn btn-danger"
-                onClick={() => deleteTask(task.id)}
-              >
-                ✖
-              </button>
-
+              {task.note && <div>📝 {task.note}</div>}
+              <button className="btn btn-danger" onClick={()=>deleteTask(task.id)}>✖</button>
             </div>
           )}
         </div>
       ))}
+
+      </div>
+
+      <div className="add-bar2">
+        <input value={text} onChange={(e)=>setText(e.target.value)} placeholder="Task"/>
+        <input type="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
+        <input value={note} onChange={(e)=>setNote(e.target.value)} placeholder="Note"/>
+        <button className="btn" onClick={addTask}>✔</button>
+      </div>
+
+      
+
+      
     </div>
   );
 }
