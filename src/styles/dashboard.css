@@ -4,19 +4,20 @@
   font-family: "Inter", sans-serif;
 }
 
-body{
-font-family: "Poppins";
+body {
+  font-family: "Poppins";
   background: #000000;
 }
 
-h2, h3 {
+h2,
+h3 {
   margin-bottom: 10px;
 }
 
 /* CARD STYLE */
 .card {
   background: #222222;
-  border: 1px solid #1e293b;
+  border: 0;
   border-radius: 12px;
   padding: 12px;
   color: #e2e8f0;
@@ -52,7 +53,8 @@ h2, h3 {
 }
 
 /* INPUTS */
-input, textarea {
+input,
+textarea {
   background: #181818;
   border: 1px solid #424242;
   color: white;
@@ -68,7 +70,7 @@ textarea {
 .btn {
   background: #53525200;
   border: 2px solid #c7c7c7;
-  
+
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
@@ -125,11 +127,22 @@ textarea {
     "history future scheduled";
 }
 
-.daily { grid-area: daily; }
-.history { grid-area: history; height: 20vw; }
-.future { grid-area: future; }
-.reminders { grid-area: reminders; }
-.scheduled { grid-area: scheduled; }
+.daily {
+  grid-area: daily;
+}
+.history {
+  grid-area: history;
+  min-height: 20vw;
+}
+.future {
+  grid-area: future;
+}
+.reminders {
+  grid-area: reminders;
+}
+.scheduled {
+  grid-area: scheduled;
+}
 
 .box {
   background: #222222;
@@ -177,24 +190,24 @@ textarea {
   left: 0;
 }
 
-.drawer button{
+.drawer button {
   background: #454545;
   border: none;
-  color:#eaeaea;
+  color: #eaeaea;
   border-radius: 6px;
 }
 
-.topbar button{
+.topbar button {
   background: #454545;
   border: none;
-  color:#eaeaea;
+  color: #eaeaea;
   border-radius: 6px;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 999;
 }
 
